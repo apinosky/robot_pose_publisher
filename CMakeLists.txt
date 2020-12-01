@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(robot_pose_publisher)
 
+## Compile as C++11, supported in ROS Kinetic and newer
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_compile_options(-Wall -Wextra -pipe -Wno-psabi)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -13,14 +18,14 @@ find_package(catkin REQUIRED COMPONENTS geometry_msgs roscpp tf)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package()
+catkin_package(CATKIN_DEPENDS geometry_msgs roscpp tf)
 
 ###########
 ## Build ##
 ###########
 
 ## Specify additional locations of header files
-include_directories(include
+include_directories( #include
   ${catkin_INCLUDE_DIRS}
 )
 
